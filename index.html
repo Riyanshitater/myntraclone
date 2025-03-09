@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra Clone - Fashion & Lifestyle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #282c3f;
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ff3f6c;
+        }
+        
+        .search-container {
+            position: relative;
+            width: 400px;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #f5f5f6;
+            background-color: #f5f5f6;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #696e79;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-action {
+            margin: 0 15px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .nav-action i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: 4px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Deals Section */
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #282c3f;
+        }
+        
+        .deals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .deal-card {
+            width: 220px;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .deal-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .deal-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .deal-details {
+            padding: 15px;
+        }
+        
+        .brand-name {
+            font-weight: 600;
+            color: #282c3f;
+            margin-bottom: 4px;
+        }
+        
+        .product-name {
+            color: #535766;
+            font-size: 14px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .current-price {
+            font-weight: 600;
+            font-size: 14px;
+            color: #282c3f;
+        }
+        
+        .original-price {
+            font-size: 12px;
+            color: #7e818c;
+            text-decoration: line-through;
+            margin: 0 5px;
+        }
+        
+        .discount {
+            font-size: 12px;
+            color: #ff905a;
+        }
+        
+        /* Categories Section */
+        .categories-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            width: 180px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .category-name {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #282c3f;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #fafbfc;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
+        
+        .footer-column {
+            width: 20%;
+        }
+        
+        .footer-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #282c3f;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #696e79;
+            font-size: 13px;
+        }
+        
+        .footer-links a:hover {
+            color: #ff3f6c;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            color: #696e79;
+            font-size: 12px;
+            border-top: 1px solid #eaeaec;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/3.0.1/myntra.svg" alt="Myntra Clone Logo" class="logo">
+            
+            <ul class="nav-links">
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Living</a></li>
+                <li><a href="#">Beauty</a></li>
+                <li><a href="#">Studio</a></li>
+            </ul>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search for products, brands and more">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="nav-action">
+                    <span>👤</span>
+                    <span>Profile</span>
+                </div>
+                <div class="nav-action">
+                    <span>❤️</span>
+                    <span>Wishlist</span>
+                </div>
+                <div class="nav-action">
+                    <span>🛒</span>
+                    <span>Bag</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <img src="/api/placeholder/1400/400" alt="Fashion Sale" class="hero-image">
+    </section>
+    
+    <!-- Deals Section -->
+    <section>
+        <h2 class="section-title">DEALS OF THE DAY</h2>
+        <div class="deals-container">
+            <!-- Product Card 1 -->
+            <div class="deal-card">
+                <img src="/api/placeholder/220/250" alt="H&M T-shirt" class="deal-img">
+                <div class="deal-details">
+                    <p class="brand-name">H&M</p>
+                    <p class="product-name">Men Solid Cotton T-shirt</p>
+                    <div class="price-container">
+                        <span class="current-price">Rs. 599</span>
+                        <span class="original-price">Rs. 999</span>
+                        <span class="discount">(40% OFF)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 2 -->
+            <div class="deal-card">
+                <img src="/api/placeholder/220/250" alt="ZARA Dress" class="deal-img">
+                <div class="deal-details">
+                    <p class="brand-name">ZARA</p>
+                    <p class="product-name">Women Floral Print Dress</p>
+                    <div class="price-container">
+                        <span class="current-price">Rs. 1299</span>
+                        <span class="original-price">Rs. 2499</span>
+                        <span class="discount">(48% OFF)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="deal-card">
+                <img src="/api/placeholder/220/250" alt="Levis Jeans" class="deal-img">
+                <div class="deal-details">
+                    <p class="brand-name">Levis</p>
+                    <p class="product-name">Men Blue Slim Fit Jeans</p>
+                    <div class="price-container">
+                        <span class="current-price">Rs. 1599</span>
+                        <span class="original-price">Rs. 2899</span>
+                        <span class="discount">(45% OFF)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 4 -->
+            <div class="deal-card">
+                <img src="/api/placeholder/220/250" alt="NIKE Shoes" class="deal-img">
+                <div class="deal-details">
+                    <p class="brand-name">NIKE</p>
+                    <p class="product-name">Unisex Running Shoes</p>
+                    <div class="price-container">
+                        <span class="current-price">Rs. 3499</span>
+                        <span class="original-price">Rs. 5999</span>
+                        <span class="discount">(42% OFF)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 5 -->
+            <div class="deal-card">
+                <img src="/api/placeholder/220/250" alt="Puma T-shirt" class="deal-img">
+                <div class="deal-details">
+                    <p class="brand-name">Puma</p>
+                    <p class="product-name">Men Black Sports T-shirt</p>
+                    <div class="price-container">
+                        <span class="current-price">Rs. 899</span>
+                        <span class="original-price">Rs. 1499</span>
+                        <span class="discount">(40% OFF)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section>
+        <h2 class="section-title">SHOP BY CATEGORY</h2>
+        <div class="categories-container">
+            <!-- Category 1 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Men's Fashion" class="category-img">
+                <p class="category-name">Men's Fashion</p>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Women's Fashion" class="category-img">
+                <p class="category-name">Women's Fashion</p>
+            </div>
+            
+            <!-- Category 3 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Kids Wear" class="category-img">
+                <p class="category-name">Kids Wear</p>
+            </div>
+            
+            <!-- Category 4 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Footwear" class="category-img">
+                <p class="category-name">Footwear</p>
+            </div>
+            
+            <!-- Category 5 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Accessories" class="category-img">
+                <p class="category-name">Accessories</p>
+            </div>
+            
+            <!-- Category 6 -->
+            <div class="category-card">
+                <img src="/api/placeholder/180/180" alt="Beauty Products" class="category-img">
+                <p class="category-name">Beauty Products</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="footer-title">ONLINE SHOPPING</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Kids</a></li>
+                    <li><a href="#">Home & Living</a></li>
+                    <li><a href="#">Beauty</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">CUSTOMER POLICIES</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                    <li><a href="#">Track Orders</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Cancellation</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">EXPERIENCE MYNTRA APP</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Android App</a></li>
+                    <li><a href="#">iOS App</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">POPULAR SEARCHES</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Kurta Sets</a></li>
+                    <li><a href="#">Dresses</a></li>
+                    <li><a href="#">Jeans</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Handbags</a></li>
+                    <li><a href="#">Watches</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">KEEP IN TOUCH</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2025 Myntra Clone | All Rights Reserved
+        </div>
+    </footer>
+</body>
+</html>
